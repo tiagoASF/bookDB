@@ -104,6 +104,7 @@ CREATE TABLE person
     first_name NVARCHAR(50) NOT NULL,
     last_name NVARCHAR(50),
     email VARCHAR(320) NOT NULL,
+    is_active BIT DEFAULT '1',
     CONSTRAINT PK_person_id PRIMARY KEY(id),
     CONSTRAINT UQ_person_name UNIQUE(first_name, last_name),
     CONSTRAINT UQ_person_nickname UNIQUE(nickname),
