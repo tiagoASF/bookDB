@@ -172,6 +172,8 @@ CREATE TABLE book
     category_id INT NOT NULL,
     size_id INT NOT NULL,
     translator_id INT NOT NULL,
+    ISBN13 CHAR(13) NOT NULL,
+    ISBN10 CHAR(10),
     CONSTRAINT PK_book_id PRIMARY KEY(id),
     CONSTRAINT FK_book_language
         FOREIGN KEY(language_id) REFERENCES language(id),
@@ -188,7 +190,8 @@ CREATE TABLE book
     CONSTRAINT FK_book_size
         FOREIGN KEY(size_id) REFERENCES size(id),
     CONSTRAINT FK_book_translator
-        FOREIGN KEY(translator_id) REFERENCES translator(id)
+        FOREIGN KEY(translator_id) REFERENCES translator(id),
+    CONSTRAINT UQ_isbn13 UNIQUE(ISBN13)
 );
 CREATE INDEX IX_title ON book(title);
 GO
