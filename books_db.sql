@@ -115,10 +115,10 @@ CREATE TABLE publisher
     country_id INT NOT NULL,
     CONSTRAINT PK_publisher_id PRIMARY KEY(id),
     CONSTRAINT FK_publisher_country
-        FOREIGN KEY(country_id) REFERENCES country(id),
+        FOREIGN KEY(country_id) REFERENCES TA_country(id),
     CONSTRAINT UQ_publisher_name UNIQUE(publisher_name)
 );
-CREATE INDEX IX_publisher_name ON publisher(name);
+CREATE INDEX IX_publisher_name ON publisher(publisher_name);
 GO
 
 CREATE TABLE author
@@ -129,7 +129,7 @@ CREATE TABLE author
     is_nobel_prize_winner BIT DEFAULT '0',
     CONSTRAINT PK_author_id PRIMARY KEY(id),
     CONSTRAINT FK_nationality_country
-        FOREIGN KEY(country_id) REFERENCES country(id),
+        FOREIGN KEY(country_id) REFERENCES TA_country(id),
     CONSTRAINT UQ_author_name UNIQUE(name)
 );
 CREATE INDEX IX_author_name ON author(name);
@@ -155,7 +155,7 @@ CREATE TABLE book
     publisher_id INT NOT NULL,
     CONSTRAINT PK_book_id PRIMARY KEY(id),
     CONSTRAINT FK_book_category
-        FOREIGN KEY(category_id) REFERENCES category(id),
+        FOREIGN KEY(category_id) REFERENCES TA_category(id),
     CONSTRAINT FK_book_serie
         FOREIGN KEY(book_serie_id) REFERENCES book_serie(id),
     CONSTRAINT FK_book_language
@@ -165,16 +165,15 @@ CREATE TABLE book
     CONSTRAINT FK_book_translator
         FOREIGN KEY(translator_id) REFERENCES translator(id),
     CONSTRAINT FK_book_size
-        FOREIGN KEY(size_id) REFERENCES size(id),
+        FOREIGN KEY(size_id) REFERENCES TA_size(id),
     CONSTRAINT FK_book_format
-        FOREIGN KEY(format_id) REFERENCES format(id),
+        FOREIGN KEY(format_id) REFERENCES TA_format(id),
     CONSTRAINT FK_book_publisher
         FOREIGN KEY(publisher_id) REFERENCES publisher(id),
     CONSTRAINT UQ_isbn13 UNIQUE(ISBN13),
     CONSTRAINT UQ_isbn10 UNIQUE(ISBN10),
     CONSTRAINT CHK_published_era CHECK (published_era IN ('A.C', 'B.C'))
 );
-CREATE INDEX IX_author_name ON author(name);
 CREATE INDEX IX_title ON book(title);
 GO
 
@@ -236,7 +235,7 @@ CREATE TABLE store
     CONSTRAINT PK_store_id PRIMARY KEY(id),
     CONSTRAINT UQ_store_name UNIQUE(store_name),
     CONSTRAINT FK_store_country
-        FOREIGN KEY(country_id) REFERENCES country(id)
+        FOREIGN KEY(country_id) REFERENCES TA_country(id)
 );
 CREATE INDEX IX_store_name ON store(store_name);
 GO
@@ -257,9 +256,9 @@ CREATE TABLE acquisition_info
     CONSTRAINT FK_acquisition_info_acquirer
         FOREIGN KEY(acquirer_id) REFERENCES person(id),
     CONSTRAINT FK_acquisition_info_condition
-        FOREIGN KEY(condition_id) REFERENCES condition(id),
+        FOREIGN KEY(condition_id) REFERENCES TA_condition(id),
     CONSTRAINT FK_acquisition_info_type
-        FOREIGN KEY(acquisition_type_id) REFERENCES acquisition_type(id),
+        FOREIGN KEY(acquisition_type_id) REFERENCES TA_acquisition_type(id),
     CONSTRAINT FK_acquisition_info_store
         FOREIGN KEY(store_id) REFERENCES store(id),
 );
