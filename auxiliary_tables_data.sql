@@ -2,24 +2,24 @@ USE books_db;
 GO
 
 
-INSERT INTO country (country_name)
+INSERT INTO TA_country (country_name)
 VALUES ('Brazil'), ('EUA');
 
-INSERT INTO format (format_name)
+INSERT INTO TA_format (format_name)
 VALUES('Paperback'), ('Hardcover'), ('E-book'), ('Audiobook'), ('Loose Leaf'), ('Spiral-bound'),
       ('Board Book');
 GO
 
-INSERT INTO size (size_name)
+INSERT INTO TA_size (size_name)
 VALUES ('Regular'), ('Pocket');
 GO
 
-INSERT INTO award
+INSERT INTO TA_award
 VALUES  ('Booker Prize'), ('Caldecott Medal'), ('Eisner Award'), ('Hugo Award'), ('Nebula Award'),
         ('National Book Award'), ('Newbery Medal'), ('Pulitzer Price')
 GO
 
-INSERT INTO category
+INSERT INTO TA_category
 VALUES
     ('Art & Photography'), ('Biography'), ('Business & Money'), ('Childrens Book'),
     ('Cookbook, Food & Wine'), ('Comics & Graphic Novel'), ('Computer & Technology'),
@@ -29,19 +29,18 @@ VALUES
     ('Sports & Outdoors'), ('Thriller'), ('Travel');
 GO
 
-INSERT INTO person (nickname, first_name, last_name, email)
-VALUES  ('Tiago', N'Tiago André', 'Fialho', 'tiago_asf@icloud.com'),
-        ('Biazinha', 'Fabiana', N'Magalhães Barbosa', 'biazinhaa2@hotmail.com');
-GO
-
-INSERT INTO condition(condition_name)
+INSERT INTO TA_condition(condition_name)
 VALUES  ('New'), ('Used');
 GO
 
-INSERT INTO acquisition_type(acquisition_type_name)
+INSERT INTO TA_acquisition_type(acquisition_type_name)
 VALUES ('Online'), ('Physical'), ('Gift');
 GO
 
+
+INSERT INTO TA_country
+VALUES ('Brazil'), ('United States'), ('England'), ('France'), ('Portugal'),
+       ('Italy'), ('Germany'), ('Japan')
 
 
 
