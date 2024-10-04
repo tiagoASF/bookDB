@@ -1,10 +1,6 @@
 USE books_db;
 GO
 
-
-INSERT INTO TA_country (country_name)
-VALUES ('Brazil'), ('EUA');
-
 INSERT INTO TA_format (format_name)
 VALUES('Paperback'), ('Hardcover'), ('E-book'), ('Audiobook'), ('Loose Leaf'), ('Spiral-bound'),
       ('Board Book');
@@ -37,11 +33,9 @@ INSERT INTO TA_acquisition_type(acquisition_type_name)
 VALUES ('Online'), ('Physical'), ('Gift');
 GO
 
-
 INSERT INTO TA_country
 VALUES ('Brazil'), ('United States'), ('England'), ('France'), ('Portugal'),
        ('Italy'), ('Germany'), ('Japan')
-
 
 
 

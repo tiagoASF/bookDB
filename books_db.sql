@@ -144,7 +144,8 @@ CREATE TABLE book
     ISBN13 CHAR(20) NOT NULL,
     ISBN10 CHAR(20),
     published_at CHAR(4) NOT NULL,
-    published_era CHAR(4) DEFAULT 'A.C.',
+    first_published_at CHAR(4) NOT NULL,
+    first_published_era CHAR(4) DEFAULT 'A.C.',
     category_id INT NOT NULL,
     book_serie_id INT,
     language_id INT NOT NULL,
@@ -172,7 +173,7 @@ CREATE TABLE book
         FOREIGN KEY(publisher_id) REFERENCES publisher(id),
     CONSTRAINT UQ_isbn13 UNIQUE(ISBN13),
     CONSTRAINT UQ_isbn10 UNIQUE(ISBN10),
-    CONSTRAINT CHK_published_era CHECK (published_era IN ('A.C', 'B.C'))
+    CONSTRAINT CHK_published_era CHECK (first_published_era IN ('A.C', 'B.C'))
 );
 CREATE INDEX IX_title ON book(title);
 GO
