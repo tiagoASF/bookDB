@@ -1,21 +1,21 @@
 USE books_db;
 GO
 
-INSERT INTO TA_format (format_name)
+INSERT INTO book.format (format_name)
 VALUES('Paperback'), ('Hardcover'), ('E-book'), ('Audiobook'), ('Loose Leaf'), ('Spiral-bound'),
       ('Board Book');
 GO
 
-INSERT INTO TA_size (size_name)
+INSERT INTO book.size (size_name)
 VALUES ('Regular'), ('Pocket');
 GO
 
-INSERT INTO TA_award
+INSERT INTO book.award
 VALUES  ('Booker Prize'), ('Caldecott Medal'), ('Eisner Award'), ('Hugo Award'), ('Nebula Award'),
         ('National Book Award'), ('Newbery Medal'), ('Pulitzer Price')
 GO
 
-INSERT INTO TA_category
+INSERT INTO book.category
 VALUES
     ('Art & Photography'), ('Biography'), ('Business & Money'), ('Childrens Book'),
     ('Cookbook, Food & Wine'), ('Comics & Graphic Novel'), ('Computer & Technology'),
@@ -25,17 +25,23 @@ VALUES
     ('Sports & Outdoors'), ('Thriller'), ('Travel');
 GO
 
-INSERT INTO TA_condition(condition_name)
+INSERT INTO acquisition.condition(condition_name)
 VALUES  ('New'), ('Used');
 GO
 
-INSERT INTO TA_acquisition_type(acquisition_type_name)
+INSERT INTO acquisition.type(type_name)
 VALUES ('Online'), ('Physical'), ('Gift');
 GO
 
-INSERT INTO TA_country
+INSERT INTO country
 VALUES ('Brazil'), ('United States'), ('England'), ('France'), ('Portugal'),
        ('Italy'), ('Germany'), ('Japan')
+
+INSERT INTO person
+VALUES ('Tiago', 'Tiago', 'Fialho', 'tiago_asf@icloud.com', 1)
+
+INSERT INTO person
+VALUES ('Bia', 'Fabiana', 'Magalhães Barbosa', 'biazinhaa2@hotmail.com', 1)
 
 
 
