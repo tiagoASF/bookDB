@@ -4,6 +4,14 @@ GO
 /*--------------------------------------
 SCHEMMAS
 ______________________________________*/
+DROP SCHEMA IF EXISTS book;
+GO
+
+DROP SCHEMA IF EXISTS reading;
+GO
+
+DROP SCHEMA IF EXISTS acquisition;
+GO
 
 CREATE SCHEMA book;
 GO
@@ -163,7 +171,7 @@ CREATE TABLE book.book
     ISBN10 CHAR(20),
     published_at CHAR(4) NOT NULL,
     first_published_at CHAR(4) NOT NULL,
-    first_published_era CHAR(4) DEFAULT 'A.C.',
+    first_published_era CHAR(4) NOT NULL DEFAULT 'A.C.',
     category_id INT NOT NULL,
     book_serie_id INT,
     language_id INT NOT NULL,
