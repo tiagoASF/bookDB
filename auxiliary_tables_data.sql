@@ -41,7 +41,7 @@ INSERT INTO person
 VALUES ('Tiago', 'Tiago', 'Fialho', 'tiago_asf@icloud.com', 1)
 
 INSERT INTO person
-VALUES ('Bia', 'Fabiana', 'Magalhães Barbosa', 'biazinhaa2@hotmail.com', 1)
+VALUES ('Bia', 'Fabiana', N'Magalhães Barbosa', 'biazinhaa2@hotmail.com', 1)
 
 
 
