@@ -300,8 +300,8 @@ ______________________________________*/
 CREATE TABLE reading.info
 (
     id INT IDENTITY(1,1),
-    is_finished BIT,
-    rating CHAR(1) NOT NULL,
+    is_finished BIT NOT NULL DEFAULT 0,
+    rating CHAR(1),
     comments VARCHAR(300),
     is_favorite BIT NOT NULL DEFAULT '0',
     started_at DATE,
