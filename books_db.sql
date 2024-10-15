@@ -2,7 +2,7 @@ USE books_db;
 GO
 
 /*--------------------------------------
-SCHEMMAS
+SCHEMAS
 ______________________________________*/
 DROP SCHEMA IF EXISTS book;
 GO
@@ -44,7 +44,7 @@ CREATE TABLE person
     first_name NVARCHAR(50) NOT NULL,
     last_name NVARCHAR(50),
     email VARCHAR(320) NOT NULL,
-    is_active BIT DEFAULT '1',
+    is_active BIT NOT NULL DEFAULT '1',
     CONSTRAINT PK_person_id PRIMARY KEY(id),
     CONSTRAINT UQ_person_name UNIQUE(first_name, last_name),
     CONSTRAINT UQ_person_nickname UNIQUE(nickname),
@@ -152,7 +152,7 @@ CREATE TABLE book.author
     id INT IDENTITY(1,1),
     author_name VARCHAR(50) NOT NULL,
     country_id INT NOT NULL,
-    is_nobel_prize_winner BIT DEFAULT '0',
+    is_nobel_prize_winner BIT NOT NULL DEFAULT '0',
     CONSTRAINT PK_author_id PRIMARY KEY(id),
     CONSTRAINT FK_nationality_country
         FOREIGN KEY(country_id) REFERENCES country(id),
@@ -260,7 +260,7 @@ GO
 CREATE TABLE acquisition.store
 (
     id INT IDENTITY(1,1),
-    store_name VARCHAR(50),
+    store_name VARCHAR(50) NOT NULL,
     country_id INT NOT NULL,
     CONSTRAINT PK_store_id PRIMARY KEY(id),
     CONSTRAINT UQ_store_name UNIQUE(store_name),
@@ -273,7 +273,7 @@ GO
 CREATE TABLE acquisition.info
 (
     id INT IDENTITY(1,1),
-    acquired_at DATE DEFAULT GETDATE(),
+    acquired_at DATE NOT NULL DEFAULT GETDATE(),
     purchase_price INT NOT NULL,
     book_id INT NOT NULL,
     acquirer_id INT NOT NULL,
@@ -303,7 +303,7 @@ CREATE TABLE reading.info
     is_finished BIT,
     rating CHAR(1) NOT NULL,
     comments VARCHAR(300),
-    is_favorite BIT DEFAULT '0',
+    is_favorite BIT NOT NULL DEFAULT '0',
     started_at DATE,
     finished_at DATE,
     book_id INT NOT NULL,
@@ -315,8 +315,3 @@ CREATE TABLE reading.info
         FOREIGN KEY(reader_id) REFERENCES person(id),
     CONSTRAINT CHK_book_rating CHECK (rating >= 1 AND rating <= 5)
 );
-
-
-
-
-
