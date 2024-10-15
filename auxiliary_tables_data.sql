@@ -22,7 +22,7 @@ VALUES
     ('Fantasy'), ('Health, Fitness & Dieting'), ('Historical Fiction'), ('History'),
     ('Horror'), ('Humor'), ('Law'), ('Literary Fiction'), ('Mystery'), ('Nonfiction'),
     ('Poetry'), ('Short Story'), ('Science'), ('Science Fiction'), ('Social Science'),
-    ('Sports & Outdoors'), ('Thriller'), ('Travel');
+    ('Sports & Outdoors'), ('Thriller'), ('Travel'), ('Classic Literature');
 GO
 
 INSERT INTO acquisition.condition(condition_name)
