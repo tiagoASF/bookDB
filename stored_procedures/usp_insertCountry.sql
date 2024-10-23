@@ -18,8 +18,7 @@ GO
 -- Description: Insert a country in dbo.country.
 -- =============================================
 CREATE PROCEDURE usp_insertCountry (
-    @countryName nvarchar(50),
-    @country_id INT OUTPUT
+    @countryName nvarchar(50)
 )
 AS
 BEGIN
@@ -28,8 +27,6 @@ SET NOCOUNT ON
 
 INSERT INTO country
 	VALUES(@countryName)
-
-SELECT @country_id = SCOPE_IDENTITY()
 
 END
 GO

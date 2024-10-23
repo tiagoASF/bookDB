@@ -18,8 +18,7 @@ GO
 -- Description: Insert a translator in book.translator
 -- =============================================
 CREATE PROCEDURE book.usp_insertTranslator (
-    @translatorName nvarchar(50),
-    @translator_id INT OUTPUT
+    @translatorName nvarchar(50)
 )
 AS
 BEGIN
@@ -28,8 +27,6 @@ SET NOCOUNT ON
 
 INSERT INTO book.translator
 	VALUES(@translatorName)
-
-SELECT @translator_id = SCOPE_IDENTITY()
 
 END
 GO

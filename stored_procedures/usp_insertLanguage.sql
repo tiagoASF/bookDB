@@ -18,8 +18,7 @@ GO
 -- Description: Insert a language in book.language
 -- =============================================
 CREATE PROCEDURE book.usp_insertLanguage (
-    @languageName nvarchar(50),
-    @language_id INT OUTPUT
+    @languageName nvarchar(50)
 )
 AS
 BEGIN
@@ -28,8 +27,6 @@ SET NOCOUNT ON
 
 INSERT INTO book.language
 	VALUES(@languageName)
-
-SELECT @language_id = SCOPE_IDENTITY()
 
 END
 GO

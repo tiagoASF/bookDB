@@ -18,8 +18,7 @@ GO
 -- Description: Insert a bookSerie in book.bookSerie
 -- =============================================
 CREATE PROCEDURE book.usp_insertBookSerie (
-    @bookSerieName nvarchar(50),
-    @bookSerie_id INT OUTPUT
+    @bookSerieName nvarchar(50)
 )
 AS
 BEGIN
@@ -28,8 +27,6 @@ SET NOCOUNT ON
 
 INSERT INTO book.book_serie
 	VALUES(@bookSerieName)
-
-SELECT @bookSerie_id = SCOPE_IDENTITY()
 
 END
 GO

@@ -18,8 +18,7 @@ GO
 -- Description: Insert a language in book.category
 -- =============================================
 CREATE PROCEDURE book.usp_insertCategory (
-    @categoryName nvarchar(50),
-    @category_id INT OUTPUT
+    @categoryName nvarchar(50)
 )
 AS
 BEGIN
@@ -28,8 +27,6 @@ SET NOCOUNT ON
 
 INSERT INTO book.category
 	VALUES(@categoryName)
-
-SELECT @category_id = SCOPE_IDENTITY()
 
 END
 GO
