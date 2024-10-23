@@ -28,12 +28,12 @@ SET NOCOUNT ON
 
 DECLARE @country_ID INT;
 
-IF NOT EXISTS (SELECT id FROM country WHERE country_name = @publisherCountry)
+IF NOT EXISTS (SELECT 1 FROM country WHERE country_name = @publisherCountry)
     EXEC dbo.usp_insertCountry @publisherCountry
 
 SET @country_ID = (SELECT id FROM country WHERE country_name = @publisherCountry)
 
-IF NOT EXISTS (SELECT id FROM book.publisher WHERE publisher_name = @publisherName AND country_id = @country_ID)
+IF NOT EXISTS (SELECT 1 FROM book.publisher WHERE publisher_name = @publisherName AND country_id = @country_ID)
         INSERT INTO book.publisher (publisher_name, country_id)
         VALUES(@publisherName, @country_ID)
 

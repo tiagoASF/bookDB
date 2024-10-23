@@ -26,12 +26,12 @@ SET NOCOUNT ON
 
 DECLARE @country_ID INT;
 
-IF NOT EXISTS (SELECT id FROM country WHERE country_name = @country)
+IF NOT EXISTS (SELECT 1 FROM country WHERE country_name = @country)
     EXEC dbo.usp_insertCountry @country
 
 SET @country_ID = (SELECT id FROM country WHERE country_name = @country)
 
-IF NOT EXISTS (SELECT id FROM book.author WHERE author_name = @name AND country_id = @country_ID)
+IF NOT EXISTS (SELECT 1 FROM book.author WHERE author_name = @name AND country_id = @country_ID)
         INSERT INTO book.author (author_name, country_id, is_nobel_prize_winner)
         VALUES(@name, @country_ID, @is_nobel)
 
