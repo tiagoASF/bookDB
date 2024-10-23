@@ -47,4 +47,3 @@ VALUES ('Bia', 'Fabiana', N'Magalhães Barbosa', 'biazinhaa2@hotmail.com', 1)
 
 
 
-

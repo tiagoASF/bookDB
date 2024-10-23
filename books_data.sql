@@ -1,6 +1,6 @@
 
 /*--------------------------------------
-BOOK 01
+BOOK 01 - Onde os velhos não tem vez
 ______________________________________*/
 
 INSERT INTO book.language
@@ -46,7 +46,7 @@ VALUES (
         '8556522068',
         '2023',
         '2005',
-        NULL,
+        'A.C.',
         (SELECT id FROM book.category WHERE category_name = 'Literary Fiction'),
         NULL,
         (SELECT id FROM book.language WHERE language_name = 'Portuguese'),
@@ -155,7 +155,7 @@ VALUES (
         '6555112514',
         '2024',
         '1954',
-        NULL,
+        'A.C.',
         (SELECT id FROM book.category WHERE category_name = 'Fantasy'),
         NULL,
         (SELECT id FROM book.language WHERE language_name = 'Portuguese'),
@@ -174,9 +174,6 @@ GO*/
 
 -- ACQUISITION
 
-
-INSERT INTO acquisition.store
-VALUES ('Amazon', 1)
 
 INSERT INTO acquisition.info
 (
@@ -206,7 +203,7 @@ VALUES(
       )
 GO
 
-SELECT * FROM book.book_author
+
 
 -- 3. READING
 
@@ -497,8 +494,113 @@ GO*/
 -- ACQUISITION
 
 
-INSERT INTO acquisition.store
-VALUES ('Amazon', 1)
+INSERT INTO acquisition.info
+(
+    book_id, acquirer_id, condition_id, acquisition_type_id, acquired_at, purchase_price, store_id
+)
+VALUES (
+        (SELECT id FROM book.book WHERE ISBN13 = '978-6586490442'),
+        (SELECT id FROM person WHERE email = 'biazinhaa2@hotmail.com'),
+        (SELECT id FROM acquisition.condition WHERE condition_name = 'New'),
+        (SELECT id FROM acquisition.type WHERE type_name = 'Online'),
+        '2024-02-13',
+        5538,
+        (SELECT id FROM acquisition.store WHERE store_name = 'Amazon' AND country_id = 1)
+       )
+GO
+
+INSERT INTO book.book_publisher
+VALUES (
+        (SELECT id FROM book.book WHERE ISBN13 = '978-6586490442'),
+        (SELECT id FROM book.publisher WHERE publisher_name = N'Antofágica')
+       )
+
+-- 3. READING
+
+INSERT INTO reading.info (book_id, reader_id, is_finished, rating, comments, is_favorite, started_at, finished_at)
+VALUES (
+            (SELECT id FROM book.book WHERE ISBN13 = '978-6586490442'),
+            (SELECT id FROM person WHERE email = 'tiago_asf@icloud.com'),
+            1,
+            5,
+            NULL,
+            1,
+            '2024-09-21',
+            '2024-09-28'
+       )
+
+
+/*--------------------------------------
+BOOK 06 - O BURACO DA AGULHA
+______________________________________*/
+INSERT INTO book.language
+VALUES ('French')
+GO
+
+INSERT INTO book.publisher (publisher_name, country_id)
+VALUES (N'Antofágica', (SELECT id FROM country WHERE country_name = 'Brazil'));
+
+INSERT INTO book.translator
+VALUES (N'Carolina Selvatici')
+
+INSERT INTO book.author(author_name, country_id, is_nobel_prize_winner)
+VALUES (
+        'Voltaire',
+        (SELECT id FROM country WHERE country_name = 'France'),
+        0
+       )
+
+INSERT INTO book.book (title,
+                  pages,
+                  edition,
+                  ISBN13,
+                  ISBN10,
+                  published_at,
+                  first_published_at,
+                  first_published_era,
+                  category_id,
+                  book_serie_id,
+                  language_id,
+                  original_language_id,
+                  original_country_id,
+                  translator_id,
+                  format_id,
+                  size_id,
+                  publisher_id
+                  )
+VALUES (
+        N'Cândido, ou o otimismo',
+        256,
+        1,
+        '978-6586490442',
+        '6586490448',
+        '2022',
+        '1758',
+        'A.C.',
+        (SELECT id FROM book.category WHERE category_name = 'Classic Literature'),
+        NULL,
+        (SELECT id FROM book.language WHERE language_name = 'Portuguese'),
+        (SELECT id FROM book.language WHERE language_name = 'French'),
+        (SELECT id FROM country WHERE country_name = 'France'),
+        (SELECT id FROM book.translator WHERE translator_name = 'Carolina Selvatici'),
+        (SELECT id FROM book.format WHERE format_name = 'Hardcover'),
+        (SELECT id FROM book.size WHERE size_name = 'Regular'),
+        (SELECT id FROM book.publisher WHERE publisher_name = N'Antofágica')
+   )
+GO
+
+INSERT INTO book.book_author
+VALUES (
+        (SELECT id FROM book.book WHERE ISBN13 = '978-6586490442'),
+        (SELECT id FROM book.author WHERE author_name = 'Voltaire')
+       )
+
+/*INSERT INTO book.book_award
+VALUES();
+GO*/
+
+-- ACQUISITION
+
 
 INSERT INTO acquisition.info
 (
