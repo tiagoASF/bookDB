@@ -207,6 +207,9 @@ CREATE TABLE book.book
 CREATE INDEX IX_title ON book.book(title);
 GO
 
+ALTER TABLE book.book
+ALTER COLUMN translator_id INT NULL
+
 CREATE TABLE book.book_author
 (
     book_id INT NOT NULL,
@@ -315,3 +318,23 @@ CREATE TABLE reading.info
         FOREIGN KEY(reader_id) REFERENCES person(id),
     CONSTRAINT CHK_book_rating CHECK (rating >= 1 AND rating <= 5)
 );
+
+
+/*--------------------------------------
+TOP 10 BY YEAR
+______________________________________*/
+
+DROP TABLE reading.top10
+GO
+
+CREATE TABLE reading.top10
+(
+    id INT IDENTITY(1,1),
+    year DATE NOT NULL,
+    position TINYINT NOT NULL,
+    book_id INT NOT NULL,
+    CONSTRAINT PK_top10 PRIMARY KEY(id),
+    CONSTRAINT FK_top10_book
+        FOREIGN KEY(book_id) REFERENCES book.book(id),
+    CONSTRAINT CHK_position CHECK(position >= 1 AND position <=10)
+)
